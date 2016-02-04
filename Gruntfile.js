@@ -32,6 +32,16 @@ module.exports = function(grunt) {
         }
       }
     },
+    sass: {                              // Task
+      dist: {                            // Target
+        options: {                       // Target options
+          style: 'expanded'
+        },
+        files: {                         // Dictionary of files
+          'src/flipclock/css/flipclock.css': 'src/flipclock/css/flipclock.scss'       // 'destination': 'source'
+        }
+      }
+    },
     watch: {
       options: {
         livereload: true
@@ -50,7 +60,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
   // Default task(s).
-  grunt.registerTask('default', ['concat', 'uglify', 'watch']);
+  grunt.registerTask('default', ['sass', 'concat', 'uglify', 'watch']);
 };
